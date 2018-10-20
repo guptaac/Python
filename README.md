@@ -20,6 +20,9 @@ b to set new breakpoint, b amaze/runner:58    or     b filename:123    or       
 
 r return > step out of this level
 
+p is for printing value of expression or variables.  e.g. 
+(Pdb) p self.filename == 'logs'
+True
 
 --------------------------
 Starting in Python 3.7, there’s another way to enter the debugger. PEP 553 describes the built-in function breakpoint(), which makes entering the debugger easy and consistent:
