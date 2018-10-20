@@ -2,7 +2,8 @@
 
 PDB commands:
 
-l list
+l list -> it keeps moving ahead
+ll long list -> it captures all data shown by l
 
 n next
 
