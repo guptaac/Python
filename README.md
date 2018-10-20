@@ -34,6 +34,25 @@ True
 pp You can also use the command pp (pretty-print) to pretty-print expressions. This is helpful if you want to print a variable or expression with a large amount of output, e.g. lists and dictionaries. Pretty-printing keeps objects on a single line if it can or breaks them onto multiple lines if they don’t fit within the allowed width.
 
 --------------------
+You can disable and re-enable breakpoints using the command disable bpnumber and enable bpnumber. bpnumber is the breakpoint number from the breakpoints list’s 1st column Num. Notice the Enb column’s value change:
+
+(Pdb) disable 1
+Disabled breakpoint 1 at /code/util.py:1
+(Pdb) b
+Num Type         Disp Enb   Where
+1   breakpoint   keep no    at /code/util.py:1
+(Pdb) enable 1
+Enabled breakpoint 1 at /code/util.py:1
+(Pdb) b
+Num Type         Disp Enb   Where
+1   breakpoint   keep yes   at /code/util.py:1
+(Pdb) 
+To delete a breakpoint, use the command cl (clear):
+
+cl(ear) filename:lineno
+cl(ear) [bpnumber [bpnumber...]]
+
+--------------------
 
 Note the lines --Call-- and --Return--. This is pdb letting you know why execution was stopped. n (next) and s (step) will stop before a function returns. That’s why you see the --Return-- lines above.
 
