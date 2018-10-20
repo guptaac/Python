@@ -70,6 +70,85 @@ Also note ->'.' at the end of the line after the first --Return-- above:
 (Pdb) 
 When pdb stops at the end of a function before it returns, it also prints the return value for you. In this example it’s '.'.
 
+-------------------------
+Displaying Expressions
+Similar to printing expressions with p and pp, you can use the command display [expression] to tell pdb to automatically display the value of an expression, if it changed, when execution stops. Use the command undisplay [expression] to clear a display expression.
+
+Here’s the syntax and description for both commands:
+
+Command	Syntax	Description
+display	display [expression]	Display the value of expression if it changed, each time execution stops in the current frame. Without expression, list all display expressions for the current frame.
+undisplay	undisplay [expression]	Do not display expression any more in the current frame. Without expression, clear all display expressions for the current frame.
+Below is an example, example4display.py, demonstrating its use with a loop:
+
+$ ./example4display.py 
+> /code/example4display.py(9)get_path()
+-> head, tail = os.path.split(fname)
+(Pdb) ll
+  6     def get_path(fname):
+  7         """Return file's path or empty string if no path."""
+  8         import pdb; pdb.set_trace()
+  9  ->     head, tail = os.path.split(fname)
+ 10         for char in tail:
+ 11             pass  # Check filename char
+ 12         return head
+(Pdb) b 11
+Breakpoint 1 at /code/example4display.py:11
+(Pdb) c
+> /code/example4display.py(11)get_path()
+-> pass  # Check filename char
+(Pdb) display char
+display char: 'e'
+(Pdb) c
+> /code/example4display.py(11)get_path()
+-> pass  # Check filename char
+display char: 'x'  [old: 'e']
+(Pdb) 
+> /code/example4display.py(11)get_path()
+-> pass  # Check filename char
+display char: 'a'  [old: 'x']
+(Pdb) 
+> /code/example4display.py(11)get_path()
+-> pass  # Check filename char
+display char: 'm'  [old: 'a']
+In the output above, pdb automatically displayed the value of the char variable because each time the breakpoint was hit its value had changed. Sometimes this is helpful and exactly what you want, but there’s another way to use display.
+
+You can enter display multiple times to build a watch list of expressions. This can be easier to use than p. After adding all of the expressions you’re interested in, simply enter display to see the current values:
+
+$ ./example4display.py 
+> /code/example4display.py(9)get_path()
+-> head, tail = os.path.split(fname)
+(Pdb) ll
+  6     def get_path(fname):
+  7         """Return file's path or empty string if no path."""
+  8         import pdb; pdb.set_trace()
+  9  ->     head, tail = os.path.split(fname)
+ 10         for char in tail:
+ 11             pass  # Check filename char
+ 12         return head
+(Pdb) b 11
+Breakpoint 1 at /code/example4display.py:11
+(Pdb) c
+> /code/example4display.py(11)get_path()
+-> pass  # Check filename char
+(Pdb) display char
+display char: 'e'
+(Pdb) display fname
+display fname: './example4display.py'
+(Pdb) display head
+display head: '.'
+(Pdb) display tail
+display tail: 'example4display.py'
+(Pdb) c
+> /code/example4display.py(11)get_path()
+-> pass  # Check filename char
+display char: 'x'  [old: 'e']
+(Pdb) display
+Currently displaying:
+char: 'x'
+fname: './example4display.py'
+head: '.'
+tail: 'example4display.py'
 
 --------------------------
 Starting in Python 3.7, there’s another way to enter the debugger. PEP 553 describes the built-in function breakpoint(), which makes entering the debugger easy and consistent:
