@@ -37,6 +37,8 @@ True
 
 pp You can also use the command pp (pretty-print) to pretty-print expressions. This is helpful if you want to print a variable or expression with a large amount of output, e.g. lists and dictionaries. Pretty-printing keeps objects on a single line if it can or breaks them onto multiple lines if they don’t fit within the allowed width.
 
+unt	unt(il) [lineno]	Without lineno, continue execution until the line with a number greater than the current one is reached. With lineno, continue execution until a line with a number greater or equal to that is reached. In both cases, also stop when the current frame returns.
+
 --------------------
 You can disable and re-enable breakpoints using the command disable bpnumber and enable bpnumber. bpnumber is the breakpoint number from the breakpoints list’s 1st column Num. Notice the Enb column’s value change:
 
