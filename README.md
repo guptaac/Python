@@ -31,6 +31,18 @@ True
 
 pp You can also use the command pp (pretty-print) to pretty-print expressions. This is helpful if you want to print a variable or expression with a large amount of output, e.g. lists and dictionaries. Pretty-printing keeps objects on a single line if it can or breaks them onto multiple lines if they don’t fit within the allowed width.
 
+--------------------
+
+Note the lines --Call-- and --Return--. This is pdb letting you know why execution was stopped. n (next) and s (step) will stop before a function returns. That’s why you see the --Return-- lines above.
+
+Also note ->'.' at the end of the line after the first --Return-- above:
+
+--Return--
+> /code/example3.py(9)get_path()->'.'
+-> return head
+(Pdb) 
+When pdb stops at the end of a function before it returns, it also prints the return value for you. In this example it’s '.'.
+
 
 --------------------------
 Starting in Python 3.7, there’s another way to enter the debugger. PEP 553 describes the built-in function breakpoint(), which makes entering the debugger easy and consistent:
