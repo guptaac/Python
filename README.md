@@ -3,7 +3,7 @@ Ref: https://realpython.com/python-debugging-pdb/
 
 PDB commands:
 
-l list -> it keeps moving ahead
+l list -> it keeps moving ahead. Pass the argument . to always list 11 lines around the current line: l .
 ll long list -> it captures all data shown by l
 
 n next
