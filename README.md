@@ -18,7 +18,8 @@ w to get call stack where program will be
 
 c for continue till next breakpoint
 
-b to set new breakpoint, b amaze/runner:58    or     b filename:123    or         b:123    or    b  filename.methodname
+b to set new breakpoint, b(reak) [ ([filename:]lineno | function) [, condition] ]
+b amaze/runner:58    or     b filename:123    or         b:123    or    b  filename.methodname
 
 r return > step out of this level
 
