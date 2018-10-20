@@ -24,6 +24,8 @@ r return > step out of this level
 p is for printing value of expression or variables.  e.g. 
 (Pdb) p self.filename == 'logs'
 True
+(Pdb) p [m for m in self.filename]
+['l', 'o', 'g', 's']
 
 --------------------------
 Starting in Python 3.7, there’s another way to enter the debugger. PEP 553 describes the built-in function breakpoint(), which makes entering the debugger easy and consistent:
