@@ -27,6 +27,10 @@ True
 (Pdb) p [m for m in self.filename]
 ['l', 'o', 'g', 's']
 
+
+pp You can also use the command pp (pretty-print) to pretty-print expressions. This is helpful if you want to print a variable or expression with a large amount of output, e.g. lists and dictionaries. Pretty-printing keeps objects on a single line if it can or breaks them onto multiple lines if they don’t fit within the allowed width.
+
+
 --------------------------
 Starting in Python 3.7, there’s another way to enter the debugger. PEP 553 describes the built-in function breakpoint(), which makes entering the debugger easy and consistent:
 
