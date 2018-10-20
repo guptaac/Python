@@ -20,6 +20,7 @@ c for continue till next breakpoint
 
 b to set new breakpoint, b(reak) [ ([filename:]lineno | function) [, condition] ]
 b amaze/runner:58    or     b filename:123    or         b:123    or    b  filename.methodname
+Enter b with no arguments to see a list of all breakpoints
 
 r return > step out of this level
 
